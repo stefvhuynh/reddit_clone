@@ -1,0 +1,7 @@
+<h2><%= @user.username %></h2>
+
+<ul>
+<% @user.posts.each do |post| %>
+  <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+<% end %>
+</ul>

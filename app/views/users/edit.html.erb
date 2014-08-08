@@ -1,0 +1,7 @@
+<h2>Edit user</h2>
+
+<form action="<%= user_url(@user) %>" method="POST">
+  <input type="hidden" name="_method" value="UPDATE">
+  <%= render "users/fields" %>
+  <button>Update</button>
+</form>
