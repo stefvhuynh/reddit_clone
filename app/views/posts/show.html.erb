@@ -1,0 +1,24 @@
+<h2><%= @post.title %></h2>
+<p><a href="#"><%= @post.url %></a></p>
+<p><%= @post.content %></p>
+<small><a href="<%= edit_post_url(@post) %>">Edit</a></small>
+
+<form action="<%= upvote_post_url(@post) %>" method=POST>
+  <%= authenticity_token %>
+  <button>Upvote</button>
+</form>
+
+<p><%= @post.vote_score %></p>
+
+<form action="<%= downvote_post_url(@post) %>" method=POST>
+  <%= authenticity_token %>
+  <button>Downvote</button>
+</form>
+
+<%= render "comments/form", post: @post, parent_comment: nil %>
+
+<h3>Comments:</h3>
+<% @comments_by_parent_id[nil].each do |comment| %>
+  <%= render "comments/comments", post: @post, comment: comment, 
+    comments_by_parent_id: @comments_by_parent_id, left_margin: 0 %>
+<% end %>

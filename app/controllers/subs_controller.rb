@@ -8,6 +8,11 @@ class SubsController < ApplicationController
   
   def show
     @sub = Sub.find(params[:id])
+    
+    @posts = @sub.posts.includes(:votes).sort do |post1, post2| 
+      post2.vote_score <=> post1.vote_score
+    end
+    
     render :show
   end
   

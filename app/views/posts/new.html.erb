@@ -1,0 +1,6 @@
+<h2>New Post</h2>
+
+<form action="<%= posts_url %>" method="POST">
+  <%= render "posts/fields", post: @post %>
+  <button>Publish</button>
+</form>

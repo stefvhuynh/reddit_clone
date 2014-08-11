@@ -1,10 +1,14 @@
 <h2><%= @sub.name %></h2>
 <section><%= @sub.description %></section>
-<a href="<%= new_sub_post_url(@sub) %>">New post</a>
+<small><a href="<%= edit_sub_url(@sub) %>">Edit</a></small><br>
+<a href="<%= new_post_url %>">New post</a>
 
 <h3>Posts</h3>
 <ul>
-<% @sub.posts.each do |post| %>
-  <li><a href="<%= post_url(post) %>"><%= post.name %></a></li>
-<% end %>
+  <% @posts.each do |post| %>
+    <li>
+      <%= post.vote_score %>
+      <a href="<%= post_url(post) %>"><%= post.title %></a>
+    </li>
+  <% end %>
 </ul>

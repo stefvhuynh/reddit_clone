@@ -1,0 +1,27 @@
+<section style="margin-left: <%= left_margin %>px">
+  <section>
+    <h4><%= comment.commenter.username %> @<%= comment.created_at %></h4>
+    <p><%= comment.content %></p>
+    
+    <form action="<%= upvote_comment_url(comment) %>" method=POST>
+      <%= authenticity_token %>
+      <button>Upvote</button>
+    </form>
+
+    <p><%= comment.vote_score %></p>
+
+    <form action="<%= downvote_comment_url(comment.id) %>" method=POST>
+      <%= authenticity_token %>
+      <button>Downvote</button>
+    </form>
+    
+    <%= render "comments/form", post: post, parent_comment: comment %>
+    <hr>
+  </section>
+  
+  <% comments_by_parent_id[comment.id].each do |child_comment| %>
+    <%= render "comments/comments", post: post, comment: child_comment, 
+      comments_by_parent_id: comments_by_parent_id, 
+      left_margin: left_margin + 25 %>
+  <% end %>
+</section>

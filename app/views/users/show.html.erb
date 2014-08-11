@@ -1,7 +1,17 @@
 <h2><%= @user.username %></h2>
 
-<ul>
-<% @user.posts.each do |post| %>
-  <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+<% unless @user.subs.empty? %>
+  <h3>Moderates:</h3>
+  <ul>
+    <% @user.subs.each do |sub| %>
+      <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a></li>
+    <% end %>
+  </ul>
 <% end %>
+
+<h3>Posts:</h3>
+<ul>
+  <% @user.posts.each do |post| %>
+    <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+  <% end %>
 </ul>
