@@ -1,7 +1,0 @@
-== README
-
-A light clone of reddit. Users and create subreddits and post in them. Users can
-also comment on posts and upvote both posts and comments. The most upvoted items
-appear on top.
-
-Need to add some user validations...
